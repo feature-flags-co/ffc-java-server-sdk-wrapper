@@ -33,8 +33,7 @@
     <scm>
         <tag>main</tag>
         <connection>scm:git:git@github.com:feature-flags-co/ffc-java-server-sdk-wrapper.git</connection>
-        <developerConnection>scm:git:git@github.com:feature-flags-co/ffc-java-server-sdk-wrapper.git
-        </developerConnection>
+        <developerConnection>scm:git:git@github.com:feature-flags-co/ffc-java-server-sdk-wrapper.git</developerConnection>
         <url>https://github.com/feature-flags-co/ffc-java-server-sdk-wrapper/tree/main</url>
     </scm>
 
@@ -72,6 +71,11 @@
             <version>4.9.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
     </dependencies>
 
     <distributionManagement>
@@ -84,6 +88,12 @@
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
