@@ -1,19 +1,17 @@
 package co.featureflags.wrapper.model;
 
-public final class Message {
-    private final String status;
-    private final String reason;
+import co.featureflags.commons.model.BasicState;
 
-    private Message(String status, String reason) {
-        this.status = status;
-        this.reason = reason;
+public final class Message extends BasicState {
+    private Message(boolean success, String message) {
+        super(success, message);
     }
 
-    public static Message OK(String reason) {
-        return new Message("OK", reason);
+    public static Message ERROR(String message) {
+        return new Message(false, message);
     }
 
-    public static Message ERROR(String reason) {
-        return new Message("ERROR", reason);
+    public static Message OK(String message) {
+        return new Message(true, message);
     }
 }

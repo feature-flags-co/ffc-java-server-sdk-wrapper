@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,16 +16,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Configuration
-@PropertySource("classpath:sdk.properties")
 public class SDKConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(SDKConfig.class);
 
-    @Value("${envSecret}")
+    @Value("${ffc.envSecret}")
     private String envSecret;
-    @Value("${offline}")
+    @Value("${ffc.offline}")
     private boolean offline;
-    @Value("${dataFile}")
+    @Value("${ffc.dataFile}")
     private String dataFile;
 
     @Bean(destroyMethod = "close")
