@@ -79,8 +79,8 @@ Request Body:
   "country": "cn", #optional
   "customizedProperties": [ #optional
     {
-      "name": "age",
-      "value": "15"
+      "name": {name},
+      "value": {value}
     }
   ]
 }
@@ -121,8 +121,8 @@ Request Body:
   "country": "cn", #optional
   "customizedProperties": [ #optional
     {
-      "name": "age",
-      "value": "15"
+      "name": {name},
+      "value": {value}
     }
   ]
 }
