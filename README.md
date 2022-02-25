@@ -32,15 +32,12 @@ startup process. You can mount a json file in the external systems in order to i
 wrapper starts up. We strongly recommend you to initialize feature flags in using **_init_** API, and feature-flag.co
 provide an UI to do this.
 
-`JAVA_OPTS`  you want to have the option to add Java command line options at runtime, for example: you want to change
-the default port(**_8080_**)
-in the docker image.
+`serverPort`: the embedded server starts on default port 8080.
 
-``` 
-docker run -it -p 9000:9000 -e envSecret={your-sdk-key} -e JAVA_OPTS=-Dserver.port=9000 featureflagco/java-server-sdk-wrapper
-```
+`healthPort`: the health check on default port 8081.
 
-or You may add some java jvm options to launch this app by running the following command:
+`JAVA_OPTS`  you want to have the option to add Java command line options at runtime. For example, 
+java jvm options to launch this app by running the following command:
 
 ```
 docker run -it -p 8080:8080 -e envSecret={your-sdk-key} -e JAVA_OPTS=-Xmx128m featureflagco/java-server-sdk-wrapper
@@ -161,5 +158,19 @@ Response:
 {
     "success": true,
     "message": "Initialization well done"
+}
+```
+
+`/health`: get method(default port 8081), health check. if UP, HTTP status is 200; if DOWN, HTTP status is 503
+
+Response:
+
+```
+{
+  "status": {
+    "code": "UP",
+    "description": {description}
+  }
+  ...
 }
 ```
