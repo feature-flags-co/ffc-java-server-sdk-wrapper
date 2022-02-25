@@ -72,11 +72,11 @@ Request Body:
 
 ```
 {
-  "featureFlagKeyName": "your flag key name", #mandatory
-  "userKeyId": "ds.u_group0@gmail.com", #mandatory
-  "userName": "ds", #mandatory
-  "email": "ds.u_group2@gmail.com/PayButton", #optional
-  "country": "cn", #optional
+  "featureFlagKeyName": {flag-keyu-name}, #mandatory
+  "userKeyId": {user-key-id}, #mandatory
+  "userName": {username}, #mandatory
+  "email": {email}, #optional
+  "country": {country}, #optional
   "customizedProperties": [ #optional
     {
       "name": {name},
@@ -115,10 +115,10 @@ Request Body:
 
 ```
 {
-  "userKeyId": "ds.u_group0@gmail.com", #mandatory
-  "userName": "ds", #mandatory
-  "email": "ds.u_group2@gmail.com/PayButton", #optional
-  "country": "cn", #optional
+  "userKeyId": {user-key-id}, #mandatory
+  "userName": {username}, #mandatory
+  "email": {email}, #optional
+  "country": {country}, #optional
   "customizedProperties": [ #optional
     {
       "name": {name},
