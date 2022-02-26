@@ -57,7 +57,7 @@ docker run -it -p 8080:8080 -e envSecret={your-sdk-key} featureflagco/java-serve
  docker run -it -p 8080:8080 -v {your-path}:/data -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper
 ```
 
-##API
+## API
 
 **_All the requests need a envSecret header, if not existed in header, you will receive a http 400 error; if the envSecret
 doesn't match the one in SDK wrapper, you will receive a http 401 error; if invalid request posted, you will receive a http 400 error_**
