@@ -25,7 +25,7 @@ public class FeatureFlagController {
 
     private final FFCSDKService sdkService;
 
-    @Value("${ffc.envSecret}")
+    @Value("${ffc.spring.env-secret}")
     private String envSecret;
 
     private final static String INVALID_REQUEST = "Unauthorized";

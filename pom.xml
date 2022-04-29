@@ -6,7 +6,7 @@
 
     <groupId>co.featureflags</groupId>
     <artifactId>ffc-java-server-sdk-wrapper</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -40,8 +40,14 @@
     <repositories>
         <repository>
             <id>github-ffc-java-sdk-repo</id>
-            <name>The Maven Repository on Github</name>
+            <name>github-ffc-java-sdk-repo</name>
             <url>https://feature-flags-co.github.io/ffc-java-sdk/maven-repo</url>
+        </repository>
+
+        <repository>
+            <id>github-ffc-java-intergrations-repo</id>
+            <name>The Maven Repository on Github</name>
+            <url>https://feature-flags-co.github.io/ffc-java-intergrations/maven-repo</url>
         </repository>
     </repositories>
 
@@ -61,7 +67,7 @@
 
         <dependency>
             <groupId>co.featureflags</groupId>
-            <artifactId>ffc-java-server-sdk</artifactId>
+            <artifactId>ffc-java-springboot</artifactId>
             <version>1.0</version>
         </dependency>
 

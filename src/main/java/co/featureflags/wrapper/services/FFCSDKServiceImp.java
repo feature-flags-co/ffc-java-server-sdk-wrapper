@@ -5,23 +5,29 @@ import co.featureflags.commons.model.FFCUser;
 import co.featureflags.commons.model.FlagState;
 import co.featureflags.server.exterior.FFCClient;
 import co.featureflags.wrapper.model.Message;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
-public class FFCSDKServiceImp implements FFCSDKService {
+public class FFCSDKServiceImp implements FFCSDKService, InitializingBean {
 
     private final static Logger LOG = LoggerFactory.getLogger(FFCSDKServiceImp.class);
 
     private final static String DEFAULT_VALUE = "NOT FOUND";
 
-    @Value("${ffc.offline}")
+    @Value("${ffc.spring.offline}")
     private boolean offline;
 
     @Value("${ffc.dataFile}")
@@ -63,4 +69,26 @@ public class FFCSDKServiceImp implements FFCSDKService {
             return Message.ERROR(unexpected.getMessage());
         }
     }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        if (offline) {
+            String json = null;
+            Path path = Paths.get(dataFile);
+            if (Files.isRegularFile(path)) {
+                try {
+                    json = Files.lines(path)
+                            .reduce((s, line) -> s.concat(line))
+                            .orElse(null);
+                    if (StringUtils.isNotEmpty(json)) {
+                        client.initializeFromExternalJson(json);
+                        LOG.info("initializing from a file works well");
+                    }
+                } catch (IOException unexpected) {
+                    LOG.warn("initializing from a file didn't work well: {}", unexpected.getMessage());
+                }
+            }
+        }
+    }
+
 }

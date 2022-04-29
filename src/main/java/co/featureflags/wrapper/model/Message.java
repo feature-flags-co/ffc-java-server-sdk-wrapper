@@ -1,8 +1,8 @@
 package co.featureflags.wrapper.model;
 
-import co.featureflags.commons.model.BasicState;
+import co.featureflags.commons.model.BasicFlagState;
 
-public final class Message extends BasicState {
+public final class Message extends BasicFlagState {
     private Message(boolean success, String message) {
         super(success, message);
     }
