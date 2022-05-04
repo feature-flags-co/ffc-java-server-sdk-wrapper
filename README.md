@@ -40,7 +40,7 @@ provide an UI to do this.
 java jvm options to launch this app by running the following command:
 
 ```
-docker run -it -p 8080:8080 -e envSecret={your-sdk-key} -e JAVA_OPTS=-Xmx128m featureflagco/java-server-sdk-wrapper
+docker run -it -p 8080:8080 -e envSecret={your-sdk-key} -e JAVA_OPTS=-Xmx128m featureflagco/java-server-sdk-wrapper:latest
 ```
 
 #### Run this Image
@@ -48,16 +48,16 @@ docker run -it -p 8080:8080 -e envSecret={your-sdk-key} -e JAVA_OPTS=-Xmx128m fe
 you can simply run the app like the following command:
 
 ```
-docker run -it -p 8080:8080 -e envSecret={your-sdk-key} featureflagco/java-server-sdk-wrapper
+docker run -it -p 8080:8080 -e envSecret={your-sdk-key} featureflagco/java-server-sdk-wrapper:latest
 ```
 
 `dataFile` and `offline` is optional, but it's possible to mount into container and/or to work online, for example:
 
 ```
- docker run -it -p 8080:8080 -v {your-path}:/data -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper
+ docker run -it -p 8080:8080 -v {your-path}:/data -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper:latest
 ```
 ```
- docker run -it -p 8080:8080 -v {your-path}:/data -e offline=false -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper
+ docker run -it -p 8080:8080 -v {your-path}:/data -e offline=false -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper:latest
 ```
 
 ## API
