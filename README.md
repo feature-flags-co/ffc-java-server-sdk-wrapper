@@ -17,24 +17,24 @@ docker pull featureflagco/java-server-sdk-wrapper:latest
 
 Requires the following environment variable
 
-`envSecret` the environment key for your environment set in feature-flag.co. This value is mandatory. if ignore this
+`envSecret` the environment key for your environment set in featureflag.co. This value is mandatory. if ignore this
 variable, an exception will be thrown in the startup process.
 
-`offline` if in offline mode - if true is set, the SDK wrapper will not make network connections to feature-flag.co for
+`offline` if in offline mode - if true is set, the SDK wrapper will not make network connections to featureflag.co for
 any purpose. In this case you should initialize the feature flags in using `dataFile` or sending all the feature flags
-you need by `init` API; if false is set, the SDK will attempt to make network connections to feature-flag.co and update
+you need by `init` API; if false is set, the SDK will attempt to make network connections to featureflag.co and update
 the feature flags in streaming mode. Note that `init` API and `dataFile` can't work any more in online mode. The default
 value is **_true_**, in **_offline_** mode
 
 `dataFile` configures the position that the used feature flags will be stored. In the docker container, the default
 value is **_/data/data.json_**. If the file has already existed, feature flags will be automatically loaded in the
 startup process. You can mount a json file in the external systems in order to initialize feature flags when the SDK
-wrapper starts up. We strongly recommend you to initialize feature flags in using **_init_** API, and feature-flag.co
+wrapper starts up. We strongly recommend you to initialize feature flags in using **_init_** API, and featureflag.co
 provide an UI to do this.
 
-`serverPort`: the embedded server starts on default port 8080.
+`serverPort`: the embedded server starts on default port **8080**.
 
-`healthPort`: the health check on default port 8081.
+`healthPort`: the health check on default port **8081**.
 
 `JAVA_OPTS`  you want to have the option to add Java command line options at runtime. For example, 
 java jvm options to launch this app by running the following command:
@@ -57,7 +57,7 @@ docker run -it -p 8080:8080 -e envSecret={your-sdk-key} featureflagco/java-serve
  docker run -it -p 8080:8080 -v {your-path}:/data -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper:latest
 ```
 ```
- docker run -it -p 8080:8080 -v {your-path}:/data -e offline=false -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper:latest
+ docker run -it -p 8080:8080 -e offline=false -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper:latest
 ```
 
 ## API
@@ -152,7 +152,7 @@ error info.
 
 `/api/public/feature-flag/init`: post method, initializes the feature flags in SDK wrapper.
 
-you should contact us to get a json file, that contains the latest feature flags in your environment, or use data push server in feature-flag.co
+you should contact us to get a json file, that contains the latest feature flags in your environment, or use data push server in featureflag.co
 
 
 Response:
@@ -177,3 +177,4 @@ Response:
   ...
 }
 ```
+Do not forget to publish healthPort(8081 by default), if you want health check out of docker container.
