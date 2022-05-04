@@ -51,10 +51,13 @@ you can simply run the app like the following command:
 docker run -it -p 8080:8080 -e envSecret={your-sdk-key} featureflagco/java-server-sdk-wrapper
 ```
 
-`dataFile` and `offline` is optional, but it's possible to mount into container, for example:
+`dataFile` and `offline` is optional, but it's possible to mount into container and/or to work online, for example:
 
 ```
  docker run -it -p 8080:8080 -v {your-path}:/data -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper
+```
+```
+ docker run -it -p 8080:8080 -v {your-path}:/data -e offline=false -e envSecret={your-envSecret} featureflagco/java-server-sdk-wrapper
 ```
 
 ## API
